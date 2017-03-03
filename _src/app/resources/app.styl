@@ -1,0 +1,21 @@
+@require 'nib'
+@require vars
+@import '../../../node_modules/dijit/themes/claro/claro.css'
+@import '../../../src/esri/css/esri.css'
+@require '../../../src/layer-selector/resources/LayerSelector'
+
+body, html, .app
+    height 100%
+    width 100%
+    overflow hidden
+
+.nav__below
+    position absolute
+    top $below-banner
+
+.map
+    position absolute
+    top 0
+    bottom 0 + $below-banner
+    left 0
+    right 0

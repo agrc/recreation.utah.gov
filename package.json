@@ -1,0 +1,39 @@
+{
+  "name": "recreation.utah.gov",
+  "version": "1.0.0",
+  "description": "POC",
+  "main": "main.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "author": "Steve Gourley",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015-without-strict": "0.0.4",
+    "babel-preset-latest": "^6.22.0",
+    "dijit": "^1.12.1",
+    "dojo": "^1.11.2",
+    "eslint-plugin-html": "^1.7.0",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^6.0.0",
+    "grunt-bump": "^0.8.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-stylus": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-dojo": "^1",
+    "grunt-eslint": "^19.0.0",
+    "grunt-newer": "^1.1.2",
+    "grunt-parallel": "^0.5.1",
+    "grunt-stylint": "^0.2.0",
+    "load-grunt-tasks": "^3.5.1",
+    "stylint-stylish": "^1.4.0",
+    "uglify-js": "^2.7.5"
+  }
+}

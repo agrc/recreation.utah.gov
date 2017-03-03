@@ -1,0 +1,24 @@
+{
+  "name": "recreate",
+  "homepage": "https://github.com/agrc/vista",
+  "authors": [
+    "Steve Gourley <sgourley@utah.gov>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "dependencies": {
+    "esri": "arcgis-js-api#~3.19.0",
+    "layer-selector": "agrc-layer-selector#^1.0.1"
+  },
+  "resolutions": {
+    "dojox": "v1.11.2/esri-3.19.0",
+    "dijit": "v1.11.2/esri-3.19.0",
+    "dojo": "v1.11.2/esri-3.19.0",
+    "esri": "~3.19.0",
+    "util": "v1.11.2/esri-3.19.0",
+    "dstore": "v1.1.1",
+    "xstyle": "v0.3.2"
+  }
+}
