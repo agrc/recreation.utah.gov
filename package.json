@@ -1,5 +1,6 @@
 {
   "name": "recreation.utah.gov",
+  "repository": "https://github.com/agrc/recreate.utah.gov",
   "version": "1.0.0",
   "description": "POC",
   "main": "main.js",
