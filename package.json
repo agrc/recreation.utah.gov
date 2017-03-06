@@ -14,14 +14,14 @@
   },
   "devDependencies": {
     "babel-preset-es2015-without-strict": "0.0.4",
-    "babel-preset-latest": "^6.22.0",
     "dijit": "^1.12.1",
     "dojo": "^1.11.2",
-    "eslint-plugin-html": "^1.7.0",
+    "eslint-plugin-html": "^2.0.1",
     "grunt": "^1.0.1",
     "grunt-babel": "^6.0.0",
     "grunt-bump": "^0.8.0",
     "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-compress": "^1.4.1",
     "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-stylus": "^1.0.0",
@@ -31,9 +31,11 @@
     "grunt-eslint": "^19.0.0",
     "grunt-newer": "^1.1.2",
     "grunt-parallel": "^0.5.1",
+    "grunt-processhtml": "^0.4.1",
+    "grunt-ssh": "^0.12.9",
     "grunt-stylint": "^0.2.0",
     "load-grunt-tasks": "^3.5.1",
     "stylint-stylish": "^1.4.0",
-    "uglify-js": "^2.7.5"
+    "uglify-js": "^2.8.5"
   }
 }

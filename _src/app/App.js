@@ -1,4 +1,7 @@
 define([
+    './config',
+    './MapController',
+
     'dijit/_TemplatedMixin',
     'dijit/_WidgetBase',
 
@@ -6,11 +9,17 @@ define([
     'dojo/text!app/templates/App.html',
     'dojo/_base/declare',
 
-    'esri/Map',
+    'esri/map',
     'esri/geometry/Extent',
+    'esri/layers/FeatureLayer',
 
-    'layer-selector'
+    'layer-selector',
+
+    'bootstrap'
 ], (
+    config,
+    MapController,
+
     _TemplatedMixin,
     _WidgetBase,
 
@@ -20,6 +29,7 @@ define([
 
     Map,
     Extent,
+    FeatureLayer,
 
     LayerSelector
 ) => {
@@ -48,11 +58,17 @@ define([
 
             var layerSelector = new LayerSelector({
                 map: map,
-                quadWord: '',
-                baseLayers: ['Hybrid', 'Lite']
+                quadWord: window.AGRC.secrets.quadWord,
+                baseLayers: ['Terrain', 'Hybrid']
             });
 
             layerSelector.startup();
+
+            var trails = new FeatureLayer(config.urls.trails, {});
+            map.addLayer(trails);
+
+            MapController.initialize(map);
+            MapController.activateLayer(trails);
 
             this.setupConnections();
         },
@@ -60,9 +76,22 @@ define([
             console.info('app/App::setupConnections', arguments);
 
             var parent = document.getElementById('navbar-collapse');
-            this.own(on(parent, 'li.filter-item>a:click', (evt) => {
-                console.debug(`applying a filter for ${evt.target.innerHTML}`);
-            }));
+            this.own(
+                on(parent, 'li.filter-item>a:click', (evt) => {
+                    MapController.filter(...this._prepareFilterData(evt.target.href));
+                }
+            ));
+        },
+        _prepareFilterData: function (criteria) {
+            // summary:
+            //      modifies the event data for the feature layer
+            // returns an array that can be spread
+            console.info('app/App:_prepareFilterData', arguments);
+
+            // remove #
+            criteria = criteria.substring(criteria.indexOf('#') + 1);
+
+            return ['DesignatedUses', criteria, 'string'];
         }
     });
 });

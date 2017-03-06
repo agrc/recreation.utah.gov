@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <title>Recreate in Utah!</title>
-<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="app/resources/app.css" rel="stylesheet"/>
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -21,34 +20,34 @@
               Bike <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="filter-item" role="presentation"><a href="#">Bike Trails (All)</a>
-              <li class="filter-item" role="presentation"><a href="#">Mtn Bike 'Gem' Trails</a>
-              <li class="filter-item" role="presentation"><a href="#">On Street and Path Systems</a>
-              <li class="filter-item" role="presentation"><a href="#">Road Loops</a>
-              <li class="filter-item" role="presentation"><a href="#">Road Climb Classics</a>
-              <li class="filter-item" role="presentation"><a href="#">Through Bike Routes</a>
-              <li class="filter-item" role="presentation"><a href="#">Snow Bike Trails</a>
+              <li class="filter-item" role="presentation"><a href="#BIKE">Bike Trails (All)</a>
+              <li class="filter-item" role="presentation"><a href="#BIKE">Mtn Bike 'Gem' Trails</a>
+              <li class="filter-item" role="presentation"><a href="#BIKE">On Street and Path Systems</a>
+              <li class="filter-item" role="presentation"><a href="#BIKE">Road Loops</a>
+              <li class="filter-item" role="presentation"><a href="#BIKE">Road Climb Classics</a>
+              <li class="filter-item" role="presentation"><a href="#BIKE">Through Bike Routes</a>
+              <li class="filter-item" role="presentation"><a href="#BIKE">Snow Bike Trails</a>
             </ul>
           <li role="presentation" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Hike <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="filter-item" role="presentation"><a href="#">Hiking Trails (All)</a>
-              <li class="filter-item" role="presentation"><a href="#">Hiking 'Gem' Trails</a>
-              <li class="filter-item" role="presentation"><a href="#">Hiking Only</a>
-              <li class="filter-item" role="presentation"><a href="#">High points and Summits</a>
+              <li class="filter-item" role="presentation"><a href="#HIKE">Hiking Trails (All)</a>
+              <li class="filter-item" role="presentation"><a href="#HIKE">Hiking 'Gem' Trails</a>
+              <li class="filter-item" role="presentation"><a href="#HIKE">Hiking Only</a>
+              <li class="filter-item" role="presentation"><a href="#HIKE">High points and Summits</a>
             </ul>
           <li role="presentation" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Motorized <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="filter-item" role="presentation"><a href="#">ORV Day Routes</a>
-              <li class="filter-item" role="presentation"><a href="#">Designated ATV Trails</a>
-              <li class="filter-item" role="presentation"><a href="#">ORV Play Areas</a>
-              <li class="filter-item" role="presentation"><a href="#">Backcountry Roads</a>
-              <li class="filter-item" role="presentation"><a href="#">ATV Trailheads</a>
+              <li class="filter-item" role="presentation"><a href="#OHV">ORV Day Routes</a>
+              <li class="filter-item" role="presentation"><a href="#OHV,ATV">Designated ATV Trails</a>
+              <li class="filter-item" role="presentation"><a href="#OHV">ORV Play Areas</a>
+              <li class="filter-item" role="presentation"><a href="#OHV,MOTORCYCLE">Backcountry Roads</a>
+              <li class="filter-item" role="presentation"><a href="#OHV,ATV">ATV Trailheads</a>
               <li class="filter-item" role="presentation"><a href="#">Snowmobile</a>
             </ul>
           <li role="presentation" class="dropdown">
@@ -83,7 +82,7 @@
               <li class="filter-item" role="presentation"><a href="#">Camping</a>
               <li role="presentation"><a href="https://wildlife.utah.gov/fishing-in-utah.html" role="presentation">Fishing</a>
               <li class="filter-item" role="presentation"><a href="#">Golf Cources</a>
-              <li class="filter-item" role="presentation"><a href="#">Hourse and Pack Trails</a>
+              <li class="filter-item" role="presentation"><a href="#HORSE">Hourse and Pack Trails</a>
               <li role="presentation"><a href="https://wildlife.utah.gov/hunting-in-utah.html" role="presentation">Hunting</a>
               <li class="filter-item" role="presentation"><a href="#">Off the Beaten Path</a>
               <li class="filter-item" role="presentation"><a href="#">Rock Cli role="presentation"mbing</a>
@@ -95,8 +94,12 @@
     </div>
   </nav>
   <div data-dojo-type="app/App"></div>
-
+  <!-- build:template
+  <script data-dojo-config="deps:['app/packages', 'app/run']" src='./dojo/dojo.js'></script>
+  /build -->
+   <!-- build:remove -->
   <script data-dojo-config="isDebug: 1" src="./dojo/dojo.js"></script>
   <script src="app/packages.js"></script>
   <script src="app/run.js"></script>
+  <!-- /build -->
 </body>

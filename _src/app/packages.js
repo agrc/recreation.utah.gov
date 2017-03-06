@@ -20,8 +20,8 @@ require({
             main: 'dist/js/bootstrap'
         }, {
             name: 'jquery',
-            location: '../node_modules/jquery/dist',
-            main: 'jquery'
+            location: '../node_modules/jquery',
+            main: 'dist/jquery'
         }
     ],
     map: {

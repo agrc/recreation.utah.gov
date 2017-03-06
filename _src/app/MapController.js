@@ -19,11 +19,13 @@ define([
         //      container to track handles for this object
         handles: null,
 
+        // the active layer
+        activeLayer: null,
+
         // Properties to be sent into initialize
         map: null,
 
         zoomLevel: 18,
-
 
         initialize(map) {
             // summary:
@@ -32,6 +34,47 @@ define([
 
             this.map = map;
             this.handles = [];
+        },
+        activateLayer(layer) {
+            // summary:
+            //      activates the layer for other functions
+            // none
+            console.info('app/MapController:activateLayer', arguments);
+
+            if (!layer) {
+                return;
+            }
+
+            this.activeLayer = layer;
+        },
+        filter(field, query, numberOrString) {
+            // summary:
+            //      applies a definition query to a layer
+            // null
+            console.info('app/MapController:filter', arguments);
+
+            if (!this.activeLayer) {
+                console.warn('There is no active layer set to filter on. MapController.activateLayer(layer);');
+
+                return;
+            }
+
+            if (!query || !field) {
+                console.warn('There is no field or query to filter on.');
+
+                return;
+            }
+
+            var cannedQueries = {
+                number: `${field}=${query}`,
+                string: `UPPER(${field}) LIKE UPPER('%${query}%')`
+            };
+
+            if (!numberOrString) {
+                numberOrString = 'string';
+            }
+
+            this.activeLayer.setDefinitionExpression(cannedQueries[numberOrString]);
         },
         zoom(graphic) {
             // summary:

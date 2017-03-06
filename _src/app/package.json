@@ -1,0 +1,8 @@
+{
+    "name": "recreate.utah.gov",
+    "version": "1.0.0",
+    "main": "main",
+    "description": "recreation app for utah",
+    "homepage": "",
+    "dojoBuild": "app.profile.js"
+}
