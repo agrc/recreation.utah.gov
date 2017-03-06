@@ -55,7 +55,14 @@ module.exports = function (grunt) {
                         '!jasmine-favicon-reporter/**',
                         '!jasmine-jsreporter/**',
                         '!stubmodule/**',
-                        '!util/**'
+                        '!util/**',
+                        '!LICENSE',
+                        '!*.md',
+                        '!gruntfile.js',
+                        '!package.json',
+                        '!bower.json',
+                        '!*.d.ts',
+                        '!.DS_Store'
                     ],
                     dest: './',
                     cwd: 'dist/',
