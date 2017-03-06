@@ -20,10 +20,7 @@ var profile = {
                 'dojox/gfx/svg',
                 'dojox/gfx/svgext',
                 'dojox/gfx/shape',
-                'esri/layers/ArcGISDynamicMapServiceLayer',
-                'esri/layers/LayerDrawingOptions',
-                'esri/layers/VectorTileLayerImpl',
-                'esri/layers/WebTiledLayer'
+                'esri/layers/VectorTileLayerImpl'
             ],
             includeLocales: ['en-us'],
             customBase: true,
@@ -48,17 +45,8 @@ var profile = {
         location: '../node_modules/jquery',
         main: 'dist/jquery',
         trees: [
-            ['.', '.', /(src|external|core)/]
+            ['.', '.', /(\/\.)|(~$)|(src|external|core)/]
         ]
-        // ,
-        // resourceTags: {
-        //     amd: function (filename, mid) {
-        //         return false;
-        //     }
-        // },
-        // copyOnly: function () {
-        //     return true;
-        // }
     }],
     staticHasFeatures: {
         'dojo-trace-api': 0,
