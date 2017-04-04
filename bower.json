@@ -10,7 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "esri": "arcgis-js-api#~3.19.0",
-    "layer-selector": "agrc-layer-selector#^1.0.1"
+    "layer-selector": "agrc-layer-selector#^1.0.1",
+    "proj4": "^2.4.3"
   },
   "resolutions": {
     "dojox": "v1.11.2/esri-3.19.0",

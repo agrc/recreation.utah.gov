@@ -13,6 +13,11 @@ require({
         'moment',
         'put-selector',
         'layer-selector',
+        {
+            name: 'proj4',
+            location: './proj4/dist',
+            main: 'proj4'
+        },
         'xstyle',
         {
             name: 'bootstrap',

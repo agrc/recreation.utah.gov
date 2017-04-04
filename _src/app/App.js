@@ -1,5 +1,6 @@
 define([
     './config',
+    './Geolocation',
     './MapController',
 
     'dijit/_TemplatedMixin',
@@ -8,16 +9,21 @@ define([
     'dojo/on',
     'dojo/text!app/templates/App.html',
     'dojo/_base/declare',
+    'dojo/dom-construct',
 
     'esri/map',
     'esri/geometry/Extent',
+    'esri/geometry/Point',
+    'esri/geometry/webMercatorUtils',
     'esri/layers/FeatureLayer',
+    'esri/dijit/HomeButton',
 
     'layer-selector',
 
     'bootstrap'
 ], (
     config,
+    Geolocator,
     MapController,
 
     _TemplatedMixin,
@@ -26,10 +32,14 @@ define([
     on,
     template,
     declare,
+    domConstruct,
 
     Map,
     Extent,
+    Point,
+    webMercatorUtils,
     FeatureLayer,
+    HomeButton,
 
     LayerSelector
 ) => {
@@ -71,6 +81,7 @@ define([
             MapController.activateLayer(trails);
 
             this.setupConnections();
+            this._addButtons(map);
         },
         setupConnections() {
             console.info('app/App::setupConnections', arguments);
@@ -82,7 +93,7 @@ define([
                 }
             ));
         },
-        _prepareFilterData: function (criteria) {
+        _prepareFilterData(criteria) {
             // summary:
             //      modifies the event data for the feature layer
             // returns an array that can be spread
@@ -92,6 +103,42 @@ define([
             criteria = criteria.substring(criteria.indexOf('#') + 1);
 
             return ['DesignatedUses', criteria, 'string'];
+        },
+        _addButtons(map) {
+            // summary:
+            //      add the buttons below the zoomer
+            console.info('app/App:_addButtons', arguments);
+
+            var geoButtonTemplate = '<button class="geolocate btn btn-default btn-icon nav-btn">' +
+                            '<span class="glyphicon glyphicon-screenshot"></span></button>';
+
+            var home = new HomeButton({
+                map: map
+            }, this.homeNode);
+
+            if (navigator.geolocation) {
+                var geoButton = domConstruct.toDom(geoButtonTemplate);
+                domConstruct.place(geoButton, this.buttonContainer);
+
+                on(geoButton, 'click', this.zoomToCurrentPosition);
+            }
+            home.startup();
+        },
+        zoomToCurrentPosition() {
+            // summary:
+            //      description
+            // param or return
+            console.info('app/App:zoomToCurrentPosition', arguments);
+
+            Geolocator.getCurrentPosition(navigator).then(
+                (pos) => {
+                    var mountainLevel = 15;
+                    var coords = webMercatorUtils.lngLatToXY(pos.coords.longitude, pos.coords.latitude);
+                    var location = new Point(coords, MapController.map.spatialReference);
+                    MapController.map.centerAndZoom(location, mountainLevel);
+                },
+                (err) => console.error(err)
+            );
         }
     });
 });
