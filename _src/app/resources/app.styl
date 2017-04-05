@@ -4,6 +4,7 @@
 @import '../../esri/css/esri.css'
 @import '../../bootstrap/dist/css/bootstrap.min.css'
 @require '../../../src/layer-selector/resources/LayerSelector'
+@require navbar
 
 body, html, .app
     height 100%
@@ -21,6 +22,12 @@ body, html, .app
     left 0
     right 0
 
+.dropdown-menu
+    background-color #0f75bc
+    > li
+        > a
+            color #fff
+
 .buttons
     position absolute
     top 95px
@@ -30,13 +37,21 @@ body, html, .app
         padding 2px
         width 30px
         height 30px
-        background-color rgba(102, 102, 102, .8)
+        background-color $navbar-default-bg
         user-select none
         cusor pointer
         border-radius 5px
+        &:hover
+            background-color $navbar-default-link-hover-bg
         .glyphicon
             color #fff
             font-size 20px
             top 2px
             span
                 display block
+
+.HomeButton
+    .home
+        background-color $navbar-default-bg
+        &:hover
+            background-color $navbar-default-link-hover-bg

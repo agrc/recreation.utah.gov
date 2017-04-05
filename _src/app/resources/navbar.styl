@@ -1,0 +1,49 @@
+@require 'nib'
+
+.navbar-blue
+  background-color $navbar-default-bg
+  border-color $navbar-default-border
+
+  .dropdown-menu > .disabled > a
+      &,
+      &:hover,
+      &:focus
+        color $navbar-default-link-disabled-color
+        opacity .5
+
+  .navbar-brand
+    color $navbar-default-brand-color
+    &:hover,
+    &:focus
+      color $navbar-default-brand-hover-color
+      background-color $navbar-default-brand-hover-bg
+
+  .navbar-text
+    color $navbar-default-color
+
+  .navbar-nav
+    > li > a
+      color $navbar-default-link-color
+      background-color $navbar-default-brand-hover-bg
+      &:hover,
+      &:focus
+        color $navbar-default-link-hover-color
+        background-color $navbar-default-link-hover-bg
+    > .active > a
+      &,
+      &:hover,
+      &:focus
+        color $navbar-default-link-active-color
+        background-color $navbar-default-link-active-bg
+
+  .navbar-toggle
+    border-color $navbar-default-toggle-border-color
+    &:hover,
+    &:focus
+      background-color $navbar-default-toggle-hover-bg
+    .icon-bar
+      background-color $navbar-default-toggle-icon-bar-bg
+
+  .navbar-collapse,
+  .navbar-form
+    border-color $navbar-default-border
