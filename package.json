@@ -37,6 +37,7 @@
     "grunt-ssh": "^0.12.9",
     "grunt-stylint": "^0.2.0",
     "intern": "^3.4.3",
+    "intern-cli": "^0.1.2",
     "load-grunt-tasks": "^3.5.1",
     "stylint-stylish": "^1.4.0",
     "uglify-js": "^2.8.5"
