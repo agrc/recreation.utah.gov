@@ -1,17 +1,17 @@
 {
   "name": "recreate",
-  "homepage": "https://github.com/agrc/recreate.utah.gov",
+  "version": "1.3.0",
+  "homepage": "https://test.mapserv.utah.gov/recreate",
   "authors": [
     "Steve Gourley <sgourley@utah.gov>"
   ],
-  "description": "",
-  "main": "",
-  "moduleType": [],
+  "moduleType": [
+    "AMD"
+  ],
   "license": "MIT",
   "dependencies": {
     "esri": "arcgis-js-api#~3.19.0",
-    "layer-selector": "agrc-layer-selector#^1.0.1",
-    "proj4": "^2.4.3"
+    "layer-selector": "agrc-layer-selector#^1.0.1"
   },
   "resolutions": {
     "dojox": "v1.11.2/esri-3.19.0",

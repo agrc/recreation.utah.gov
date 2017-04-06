@@ -1,8 +1,8 @@
 {
-    "name": "recreate.utah.gov",
-    "version": "1.0.0",
+    "name": "recreate",
+    "version": "1.3.0",
     "main": "main",
     "description": "recreation app for utah",
-    "homepage": "",
+    "homepage": "https://test.mapserv.utah.gov/recreate",
     "dojoBuild": "app.profile.js"
 }

@@ -1,11 +1,11 @@
 {
-  "name": "recreation.utah.gov",
+  "name": "recreate",
   "repository": "https://github.com/agrc/recreate.utah.gov",
-  "version": "1.1.1",
+  "version": "1.3.0",
   "description": "POC",
   "main": "main.js",
   "scripts": {
-    "test": "grunt"
+    "test": "intern serve -o"
   },
   "author": "Steve Gourley",
   "license": "MIT",
