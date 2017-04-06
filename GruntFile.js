@@ -8,6 +8,12 @@ module.exports = function (grunt) {
         gruntFile,
         'profiles/**/*.js'
     ];
+    var bumpFiles = [
+        'package.json',
+        'bower.json',
+        '_src/app/package.json',
+        '_src/app/config.js'
+    ];
     var otherFiles = [
         '_src/app/**/*.html',
         '_src/app/**/*.styl',
@@ -29,6 +35,13 @@ module.exports = function (grunt) {
                     src: ['**/*.js'],
                     dest: 'src'
                 }]
+            }
+        },
+        bump: {
+            options: {
+                files: bumpFiles,
+                commitFiles: bumpFiles,
+                push: false
             }
         },
         clean: {
