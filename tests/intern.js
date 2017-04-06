@@ -42,15 +42,14 @@ define({
 
     // Name of the tunnel class to use for WebDriver tests.
     // See <https://theintern.github.io/intern/#option-tunnel> for built-in options
-    tunnel: 'BrowserStackTunnel',
+    tunnel: 'SeleniumTunnel',
 
     // Configuration options for the module loader; any AMD configuration options supported by the AMD loader in use
     // can be used here.
     // If you want to use a different loader than the default loader, see
     // <https://theintern.github.io/intern/#option-useLoader> for more information.
     loaders: {
-        'host-browser': 'node_modules/@dojo/loader/loader.js',
-        'host-node': '@dojo/loader'
+        'host-browser': 'node_modules/@dojo/loader/loader.js'
     },
 
     loaderOptions: {
