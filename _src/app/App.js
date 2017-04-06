@@ -73,7 +73,13 @@ define([
             let layerSelector = new LayerSelector({
                 map: map,
                 quadWord: window.AGRC.secrets.quadWord,
-                baseLayers: ['Terrain', 'Hybrid']
+                baseLayers: ['Terrain', 'Lite', 'Hybrid'],
+                overlays: ['Address Points', {
+                    Factory: FeatureLayer,
+                    url: config.urls.park,
+                    id: 'Land Ownership',
+                    opacity: 0.5
+                }]
             });
 
             layerSelector.startup();
