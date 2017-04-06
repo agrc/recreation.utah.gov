@@ -12,11 +12,24 @@ define([
     // force api to use CORS on mapserv thus removing the test request on app load
     esriConfig.defaults.io.corsEnabledServers.push('api.mapserv.utah.gov');
     esriConfig.defaults.io.corsEnabledServers.push('discover.agrc.utah.gov');
+    let recreation = 'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/Recreation/';
 
     window.AGRC = {
         version: '1.0.0',
         urls: {
-            trails: 'http://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahTrails/FeatureServer/0'
+            bikeonstreet: recreation + 'FeatureServer/9',
+            peak: recreation + 'FeatureServer/8',
+            trail: recreation + 'FeatureServer/7',
+            trailhead: recreation + 'FeatureServer/6',
+            skilift: recreation + 'FeatureServer/5',
+            skiarea: recreation + 'FeatureServer/4',
+            xcski: recreation + 'FeatureServer/3',
+            urbanpark: recreation + 'FeatureServer/2',
+            golf: recreation + 'FeatureServer/1',
+            boat: recreation + 'FeatureServer/0',
+            park: 'https://tlamap.trustlands.utah.gov/' +
+                   'arcgis/rest/services/SpecialProject/UT_SITLA_LandOwnership_WM/FeatureServer/0',
+            snowmobile: 'https://maps.dnr.utah.gov/arcgis/rest/services/DPR/SnowmobileTrails/FeatureServer/0'
         },
         secrets: {
         }

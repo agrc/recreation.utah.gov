@@ -47,10 +47,12 @@ define([
 
             this.activeLayer = layer;
         },
-        filter(field, query, numberOrString) {
+        filter(field, query, style) {
             // summary:
             //      applies a definition query to a layer
-            // null
+            // field: the field to query
+            // query: the query terms
+            // style: the syntax of query to use
             console.info('app/MapController:filter', arguments);
 
             if (!this.activeLayer) {
@@ -58,6 +60,8 @@ define([
 
                 return;
             }
+
+            this.activeLayer.show();
 
             if (!query || !field) {
                 console.warn('There is no field or query to filter on.');
@@ -67,14 +71,15 @@ define([
 
             var cannedQueries = {
                 number: `${field}=${query}`,
-                string: `UPPER(${field}) LIKE UPPER('%${query}%')`
+                string: `UPPER(${field}) LIKE UPPER('%${query}%')`,
+                exact: `UPPER(${field}) = UPPER('${query}')`
             };
 
-            if (!numberOrString) {
-                numberOrString = 'string';
+            if (!style) {
+                style = 'string';
             }
 
-            this.activeLayer.setDefinitionExpression(cannedQueries[numberOrString]);
+            this.activeLayer.setDefinitionExpression(cannedQueries[style]);
         },
         zoom(graphic) {
             // summary:

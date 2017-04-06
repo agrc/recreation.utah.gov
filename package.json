@@ -14,6 +14,7 @@
     "jquery": "^3.1.1"
   },
   "devDependencies": {
+    "@dojo/loader": "^2.0.0-beta1.1",
     "babel-preset-es2015-without-strict": "0.0.4",
     "dijit": "^1.12.1",
     "dojo": "^1.11.2",
@@ -35,6 +36,7 @@
     "grunt-processhtml": "^0.4.1",
     "grunt-ssh": "^0.12.9",
     "grunt-stylint": "^0.2.0",
+    "intern": "^3.4.3",
     "load-grunt-tasks": "^3.5.1",
     "stylint-stylish": "^1.4.0",
     "uglify-js": "^2.8.5"

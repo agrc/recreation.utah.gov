@@ -1,6 +1,7 @@
 define([
     './config',
     './Geolocation',
+    './HrefParser',
     './MapController',
 
     'dijit/_TemplatedMixin',
@@ -9,6 +10,7 @@ define([
     'dojo/on',
     'dojo/text!app/templates/App.html',
     'dojo/_base/declare',
+    'dojo/dom-class',
     'dojo/dom-construct',
 
     'esri/map',
@@ -24,6 +26,7 @@ define([
 ], (
     config,
     Geolocator,
+    HrefParser,
     MapController,
 
     _TemplatedMixin,
@@ -32,6 +35,7 @@ define([
     on,
     template,
     declare,
+    domClass,
     domConstruct,
 
     Map,
@@ -51,7 +55,7 @@ define([
         postCreate() {
             console.info('app/App::postCreate', arguments);
 
-            var map = new Map(this.mapNode, {
+            let map = new Map(this.mapNode, {
                 useDefaultBaseMap: false,
                 showAttribution: false,
                 fitExtent: true,
@@ -66,19 +70,14 @@ define([
                 })
             });
 
-            var layerSelector = new LayerSelector({
+            let layerSelector = new LayerSelector({
                 map: map,
                 quadWord: window.AGRC.secrets.quadWord,
                 baseLayers: ['Terrain', 'Hybrid']
             });
 
             layerSelector.startup();
-
-            var trails = new FeatureLayer(config.urls.trails, {});
-            map.addLayer(trails);
-
             MapController.initialize(map);
-            MapController.activateLayer(trails);
 
             this.setupConnections();
             this._addButtons(map);
@@ -86,43 +85,83 @@ define([
         setupConnections() {
             console.info('app/App::setupConnections', arguments);
 
-            var parent = document.getElementById('navbar-collapse');
+            let parent = document.getElementById('navbar-collapse');
             this.own(
                 on(parent, 'li.filter-item>a:click', (evt) => {
-                    MapController.filter(...this._prepareFilterData(evt.target.href));
+                    if (domClass.contains(evt.target.parentElement, 'disabled')) {
+                        return;
+                    }
+
+                    let parsed = HrefParser.parseHref(evt.target.href);
+                    let layers = parsed[0];
+                    let field = parsed[1];
+                    let value = parsed[2];
+                    let match = null;
+                    const hasMatch = 4;
+
+                    if (parsed.length === hasMatch) {
+                        value = parsed[2];
+                        match = parsed[3];
+                    }
+
+                    MapController.map.graphicsLayerIds.forEach((id) => {
+                        let layer = MapController.map.getLayer(id);
+                        layer.hide();
+                    });
+
+                    layers.forEach((layerId) => {
+                        if (MapController.map.graphicsLayerIds.indexOf(layerId) > -1) {
+                            MapController.activateLayer(MapController.map.getLayer(layerId));
+                        } else {
+                            let layer = new FeatureLayer(config.urls[layerId], {
+                                id: layerId
+                            });
+
+                            MapController.map.addLayer(layer);
+                            MapController.activateLayer(layer);
+                        }
+
+                        MapController.filter(...this._prepareFilterData(field, match, value));
+                    });
                 }
             ));
         },
-        _prepareFilterData(criteria) {
+        _prepareFilterData(field, match, value) {
             // summary:
             //      modifies the event data for the feature layer
             // returns an array that can be spread
             console.info('app/App:_prepareFilterData', arguments);
 
-            // remove #
-            criteria = criteria.substring(criteria.indexOf('#') + 1);
+            if (!match) {
+                match = 'string';
+            }
 
-            return ['DesignatedUses', criteria, 'string'];
+            return [field, value, match];
         },
         _addButtons(map) {
             // summary:
             //      add the buttons below the zoomer
             console.info('app/App:_addButtons', arguments);
 
-            var geoButtonTemplate = '<button class="geolocate btn btn-default btn-icon nav-btn">' +
+            let geoButtonTemplate = '<button class="geolocate btn btn-default btn-icon nav-btn">' +
                             '<span class="glyphicon glyphicon-screenshot"></span></button>';
 
-            var home = new HomeButton({
+            let home = new HomeButton({
                 map: map
             }, this.homeNode);
 
-            if (navigator.geolocation) {
-                var geoButton = domConstruct.toDom(geoButtonTemplate);
-                domConstruct.place(geoButton, this.buttonContainer);
-
-                on(geoButton, 'click', this.zoomToCurrentPosition);
-            }
             home.startup();
+
+            if (!this.supportsGeolocation()) {
+                console.warn('geolocation is not supported in this browser or without https.');
+
+                return;
+            }
+
+            let geoButton = domConstruct.toDom(geoButtonTemplate);
+            domConstruct.place(geoButton, this.buttonContainer);
+
+            on(geoButton, 'click', this.zoomToCurrentPosition);
         },
         zoomToCurrentPosition() {
             // summary:
@@ -132,13 +171,29 @@ define([
 
             Geolocator.getCurrentPosition(navigator).then(
                 (pos) => {
-                    var mountainLevel = 15;
-                    var coords = webMercatorUtils.lngLatToXY(pos.coords.longitude, pos.coords.latitude);
-                    var location = new Point(coords, MapController.map.spatialReference);
+                    let mountainLevel = 15;
+                    let coords = webMercatorUtils.lngLatToXY(pos.coords.longitude, pos.coords.latitude);
+                    let location = new Point(coords, MapController.map.spatialReference);
                     MapController.map.centerAndZoom(location, mountainLevel);
                 },
                 (err) => console.error(err)
             );
+        },
+        supportsGeolocation() {
+            // summary:
+            //      returns true if geolocation is ok
+            // boolean
+            console.info('app/App:supportsGeolocation', arguments);
+
+            if (!navigator.geolocation) {
+                return false;
+            }
+
+            if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
+                return false;
+            }
+
+            return true;
         }
     });
 });
