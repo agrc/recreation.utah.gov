@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "esri": "arcgis-js-api#~3.19.0",
-    "layer-selector": "agrc-layer-selector#^1.0.1"
+    "layer-selector": "agrc-layer-selector#^1.1.1"
   },
   "resolutions": {
     "dojox": "v1.11.2/esri-3.19.0",
