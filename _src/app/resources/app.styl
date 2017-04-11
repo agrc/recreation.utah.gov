@@ -55,3 +55,23 @@ body, html, .app
         background-color $navbar-default-bg
         &:hover
             background-color $navbar-default-link-hover-bg
+
+.spin
+    animation spin 2s infinite linear
+
+@keyframes spin
+    0%
+        transform rotate(0deg)
+    100%
+        transform rotate(360deg)
+
+.pulse
+    animation pulse 3s infinite
+
+@keyframes pulse
+    0%
+        opacity 1.0
+    45%
+        opacity .20
+    100%
+        opacity 1.0

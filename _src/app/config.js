@@ -2,12 +2,14 @@ define([
     'dojo/has',
     'dojo/request/xhr',
 
-    'esri/config'
+    'esri/config',
+    'esri/symbols/SimpleMarkerSymbol'
 ], function (
     has,
     xhr,
 
-    esriConfig
+    esriConfig,
+    SimpleMarkerSymbol
 ) {
     // force api to use CORS on mapserv thus removing the test request on app load
     esriConfig.defaults.io.corsEnabledServers.push('api.mapserv.utah.gov');
@@ -32,6 +34,29 @@ define([
             snowmobile: 'https://maps.dnr.utah.gov/arcgis/rest/services/DPR/SnowmobileTrails/FeatureServer/0'
         },
         secrets: {
+        },
+        symbols: {
+            point: new SimpleMarkerSymbol({
+                color: [0, 116, 217, 200], // eslint-disable-line no-magic-numbers
+                size: 11,
+                angle: 0,
+                xoffset: 0,
+                yoffset: 0,
+                type: 'esriSMS',
+                style: 'esriSMSCircle',
+                outline: {
+                    color: [255, 255, 255, 255], // eslint-disable-line no-magic-numbers
+                    width: 1.6,
+                    type: 'esriSLS',
+                    style: 'esriSLSSolid'
+                }
+            })
+        },
+        topics: {
+            graphics: {
+                highlight: 'a',
+                clear: 'b'
+            }
         }
     };
 

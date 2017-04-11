@@ -2,6 +2,7 @@ define([
     './config',
     './Geolocation',
     './HrefParser',
+    './GraphicsController',
     './MapController',
 
     'dijit/_TemplatedMixin',
@@ -14,10 +15,12 @@ define([
     'dojo/dom-construct',
 
     'esri/map',
+    'esri/graphic',
     'esri/geometry/Extent',
     'esri/geometry/Point',
     'esri/geometry/webMercatorUtils',
     'esri/layers/FeatureLayer',
+    'esri/layers/GraphicsLayer',
     'esri/dijit/HomeButton',
 
     'layer-selector',
@@ -27,6 +30,7 @@ define([
     config,
     Geolocator,
     HrefParser,
+    GraphicsController,
     MapController,
 
     _TemplatedMixin,
@@ -39,10 +43,12 @@ define([
     domConstruct,
 
     Map,
+    Graphic,
     Extent,
     Point,
     webMercatorUtils,
     FeatureLayer,
+    GraphicsLayer,
     HomeButton,
 
     LayerSelector
@@ -88,6 +94,13 @@ define([
 
             layerSelector.startup();
             MapController.initialize(map);
+            GraphicsController.initialize(config, config.symbols);
+            let graphicsLayer = new GraphicsLayer({
+                className: 'pulse'
+            });
+
+            GraphicsController.graphicsLayer = graphicsLayer;
+            MapController.map.addLayer(graphicsLayer);
 
             this.setupConnections();
             this._addButtons(map);
@@ -173,20 +186,30 @@ define([
 
             on(geoButton, 'click', this.zoomToCurrentPosition);
         },
-        zoomToCurrentPosition() {
+        zoomToCurrentPosition(evt) {
             // summary:
             //      description
             // param or return
             console.info('app/App:zoomToCurrentPosition', arguments);
 
+            domClass.add(evt.target, 'spin');
+
             Geolocator.getCurrentPosition(navigator).then(
                 (pos) => {
+                    domClass.remove(evt.target, 'spin');
+
                     let mountainLevel = 15;
                     let coords = webMercatorUtils.lngLatToXY(pos.coords.longitude, pos.coords.latitude);
                     let location = new Point(coords, MapController.map.spatialReference);
+                    let graphic = new Graphic(location);
+
                     MapController.map.centerAndZoom(location, mountainLevel);
+                    GraphicsController.highlight(graphic);
                 },
-                (err) => console.error(err)
+                (err) => {
+                    console.error(err);
+                    domClass.remove(evt.target, 'spin');
+                }
             );
         },
         supportsGeolocation() {
