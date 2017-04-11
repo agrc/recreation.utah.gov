@@ -1,7 +1,7 @@
 define([
     './config',
     './Geolocation',
-    './HrefParser',
+    './QueryParser',
     './GraphicsController',
     './MapController',
 
@@ -29,7 +29,7 @@ define([
 ], (
     config,
     Geolocator,
-    HrefParser,
+    QueryParser,
     GraphicsController,
     MapController,
 
@@ -115,51 +115,41 @@ define([
                         return;
                     }
 
-                    let parsed = HrefParser.parseHref(evt.target.href);
-                    let layers = parsed[0];
-                    let field = parsed[1];
-                    let value = parsed[2];
-                    let match = null;
-                    const hasMatch = 4;
-
-                    if (parsed.length === hasMatch) {
-                        value = parsed[2];
-                        match = parsed[3];
-                    }
+                    let options = QueryParser.parseDataAttributes(evt.target);
 
                     MapController.map.graphicsLayerIds.forEach((id) => {
                         let layer = MapController.map.getLayer(id);
                         layer.hide();
                     });
 
-                    layers.forEach((layerId) => {
-                        if (MapController.map.graphicsLayerIds.indexOf(layerId) > -1) {
-                            MapController.activateLayer(MapController.map.getLayer(layerId));
+                    options.forEach((option) => {
+                        if (MapController.map.graphicsLayerIds.indexOf(option.layer) > -1) {
+                            MapController.activateLayer(MapController.map.getLayer(option.layer));
                         } else {
-                            let layer = new FeatureLayer(config.urls[layerId], {
-                                id: layerId
+                            let layer = new FeatureLayer(config.urls[option.layer], {
+                                id: option.layer
                             });
 
                             MapController.map.addLayer(layer);
                             MapController.activateLayer(layer);
                         }
 
-                        MapController.filter(...this._prepareFilterData(field, match, value));
+                        MapController.filter(...this._prepareFilterData(option));
                     });
                 }
             ));
         },
-        _prepareFilterData(field, match, value) {
+        _prepareFilterData(option) {
             // summary:
             //      modifies the event data for the feature layer
             // returns an array that can be spread
             console.info('app/App:_prepareFilterData', arguments);
 
-            if (!match) {
-                match = 'string';
+            if (!option.match) {
+                option.match = 'string';
             }
 
-            return [field, value, match];
+            return [option.attribute, option.value, option.match];
         },
         _addButtons(map) {
             // summary:

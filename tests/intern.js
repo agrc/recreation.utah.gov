@@ -106,7 +106,7 @@ define({
     },
 
     // Unit test suite(s) to run in each browser
-    suites: ['tests/unit/test_app'],
+    suites: ['tests/unit/test_queryParser'],
 
     // Functional test suite(s) to execute against each browser once unit tests are completed
     functionalSuites: [],
