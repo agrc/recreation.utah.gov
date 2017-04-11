@@ -17,7 +17,7 @@ define([
     let recreation = 'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/Recreation/';
 
     window.AGRC = {
-        version: '1.3.1',
+        version: '1.3.2',
         urls: {
             bikeonstreet: recreation + 'FeatureServer/9',
             peak: recreation + 'FeatureServer/8',
