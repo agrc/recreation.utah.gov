@@ -1,7 +1,7 @@
 {
   "name": "recreate",
   "repository": "https://github.com/agrc/recreate.utah.gov",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "POC",
   "main": "main.js",
   "scripts": {
