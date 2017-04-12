@@ -9,7 +9,7 @@ define([
     'dijit/_WidgetBase',
 
     'dojo/on',
-    'dojo/text!app/templates/App.html',
+    'dojo/text!./templates/App.html',
     'dojo/_base/declare',
     'dojo/dom-class',
     'dojo/dom-construct',
