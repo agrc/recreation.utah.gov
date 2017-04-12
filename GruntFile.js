@@ -25,7 +25,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         babel: {
             options: {
-                sourceMap: false,
+                sourceMap: true,
                 presets: ['es2015-without-strict']
             },
             src: {

@@ -16,6 +16,7 @@ define([
 
     'esri/map',
     'esri/graphic',
+    'esri/InfoTemplate',
     'esri/geometry/Extent',
     'esri/geometry/Point',
     'esri/geometry/webMercatorUtils',
@@ -44,6 +45,7 @@ define([
 
     Map,
     Graphic,
+    InfoTemplate,
     Extent,
     Point,
     webMercatorUtils,
@@ -78,7 +80,7 @@ define([
 
             let layerSelector = new LayerSelector({
                 map: map,
-                quadWord: window.AGRC.secrets.quadWord,
+                quadWord: config.secrets.quadWord,
                 baseLayers: ['Terrain', 'Hybrid', 'Topo', {
                     token: 'Lite',
                     selected: true,
@@ -95,6 +97,7 @@ define([
             layerSelector.startup();
             MapController.initialize(map);
             GraphicsController.initialize(config, config.symbols);
+
             let graphicsLayer = new GraphicsLayer({
                 className: 'pulse'
             });
@@ -126,8 +129,16 @@ define([
                         if (MapController.map.graphicsLayerIds.indexOf(option.layer) > -1) {
                             MapController.activateLayer(MapController.map.getLayer(option.layer));
                         } else {
-                            let layer = new FeatureLayer(config.urls[option.layer], {
-                                id: option.layer
+                            let templateData = config.popupTemplates[option.layer];
+                            let infoTemplate = new InfoTemplate();
+
+                            infoTemplate.setTitle(templateData.title);
+                            infoTemplate.setContent(templateData.template);
+
+                            let layer = new FeatureLayer(config.urls[option.layer].url, {
+                                id: option.layer,
+                                outFields: config.urls[option.layer].fields,
+                                infoTemplate: infoTemplate
                             });
 
                             MapController.map.addLayer(layer);
