@@ -39,9 +39,11 @@ define([
     // force api to use CORS on mapserv thus removing the test request on app load
     esriConfig.defaults.io.corsEnabledServers.push('api.mapserv.utah.gov');
     esriConfig.defaults.io.corsEnabledServers.push('discover.agrc.utah.gov');
+    esriConfig.defaults.io.corsEnabledServers.push('tlamap.trustlands.utah.gov');
+    esriConfig.defaults.io.corsEnabledServers.push('maps.dnr.utah.gov');
     let recreation = 'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/Recreation/';
 
-    window.AGRC = {
+    var config = {
         version: '1.3.2',
         urls: {
             bikeonstreet: {
@@ -176,18 +178,21 @@ define([
         config.secrets.quadWord = 'alfred-plaster-crystal-dexter';
     } else if (has('agrc-build') === 'stage') {
         // test.mapserv.utah.gov
-        window.AGRC.secrets.quadWord = 'opera-event-little-pinball';
+        config.secrets.quadWord = 'opera-event-little-pinball';
     } else {
         // localhost
         xhr(require.baseUrl + 'secrets.json', {
             handleAs: 'json',
             sync: true
-        }).then(function (secrets) {
-            window.AGRC.secrets.quadWord = secrets.quadWord;
-        }, function () {
-            throw 'Error getting secrets!';
-        });
+        }).then(
+            (secrets) => {
+                config.secrets.quadWord = secrets.quadWord;
+            },
+            () => {
+                throw 'Error getting secrets!';
+            }
+        );
     }
 
-    return window.AGRC;
+    return config;
 });
