@@ -5,11 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recreation | Utah</title>
-<!-- build:remove -->
-<script data-dojo-config="isDebug: 1" src="./dojo/dojo.js"></script>
-<script src="app/packages.js"></script>
-<script src="app/run.js"></script>
-<!-- /build -->
 <link href="app/resources/app.css" rel="stylesheet" type="text/css">
 </head>
   <body>
@@ -104,13 +99,13 @@
     </nav>
     <div class="clearfix"></div>
     <div class="layout__container">
-      <nav class="off-canvas-navigation section--nav-below">
+      <nav class="off-canvas-navigation">
         <ul>
-          <li class="menu-item"><a class='menu-button' href="#data">Trail Info</a></li>
-          <li class="sidebar-item"><a class='sidebar-button' href="#info">Extra Info</a></li>
+          <li class="sidebar--left"><a class='sidebar sidebar__link' href="#data">Trail Info</a></li>
+          <li class="sidebar--right"><a class='sidebar sidebar__link' href="#info">Extra Info</a></li>
         </ul>
       </nav>
-      <section class="section__data section--nav-below">
+      <section class="section section__data nav--below-relative">
         <aside>
           <h1>Trails</h1>
           <h4>Amasa Back Area</h4>
@@ -135,13 +130,11 @@
           </ul>
         </aside>
        </section>
-      <section class="section__map">
+      <section class="section section__map">
         <div data-dojo-type="app/App"></div>
-        <!-- build:template
-        <script data-dojo-config="deps:['app/packages', 'app/run']" src='./dojo/dojo.js'></script>
-        /build -->
+
       </section>
-      <section class="section__info section--nav-below">
+      <section class="section section__info nav--below-relative">
         <aside>
           <h1>Area Info</h1>
           <p>Welcome to the home of the greatest mountain biking on the planet. Moab offers a huge variety of trails for mountain bikers of any experience level, from beginners looking for a scenic ride through beautiful canyons and mesa tops, to seasoned bikers looking for the ultimate challenge.</p>
@@ -150,5 +143,13 @@
         </aside>
     </section>
   </div>
-  </body>
+  <!-- build:remove -->
+  <script data-dojo-config="isDebug: 1" src="./dojo/dojo.js"></script>
+  <script src="app/packages.js"></script>
+  <script src="app/run.js"></script>
+  <!-- /build -->
+  <!-- build:template
+  <script data-dojo-config="deps:['app/packages', 'app/run']" src='./dojo/dojo.js'></script>
+  /build -->
+</body>
 </html>

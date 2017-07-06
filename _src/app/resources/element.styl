@@ -1,0 +1,42 @@
+@require 'nib'
+@require vars
+
+
+/* Globals */
+::selection
+  background $background-color
+  color $bert-color
+  text-shadow none
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section
+  display block
+body, html, .app
+  height 100%
+  width 100%
+  padding 0
+  margin 0
+html
+  font-size 100%
+  text-size-adjust 100%
+body
+  color #333
+  color rgba(0, 0, 0, .7)
+a
+  text-decoration none
+  color #247eb7
+  &:hover
+    text-decoration underline
+    color #206fa1
+section
+  height 100%
+  box-sizing unset
+aside
+    margin-bottom 15%
+    h1
+      font-size 20px
+      margin 0
+      display block
+    a
+      margin 0
+      padding .5em 0
+      display block
+      border-bottom 1px solid rgba(255, 255, 255, .2)
