@@ -1,108 +1,154 @@
+
 <!DOCTYPE html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>Recreate in Utah!</title>
-<link href="app/resources/app.css" rel="stylesheet"/>
-<body>
-  <nav class="navbar navbar-blue navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Recreate Utah!</a>
-      </div>
-      <div class="collapse navbar-collapse" id="navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li role="presentation" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              Bike <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="filter-item" role="presentation"><a href="#bike-all" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE" data-layer2="bikeonstreet">Bike Trails (All)</a>
-              <li class="filter-item disabled" role="presentation"><a href="#bike-gem" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE">Mtn Bike 'Gem' Trails</a>
-              <li class="filter-item" role="presentation"><a href="#bike-onstreet" data-layer1="bikeonstreet">On Street and Path Systems</a>
-              <li class="filter-item disabled" role="presentation"><a href="#bike-loops" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE">Road Loops</a>
-              <li class="filter-item disabled" role="presentation"><a href="#bike-climbs" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE">Road Climb Classics</a>
-              <li class="filter-item disabled" role="presentation"><a href="#bike-through" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE">Through Bike Routes</a>
-              <li class="filter-item disabled" role="presentation"><a href="#bike-snow" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE">Snow Bike Trails</a>
-            </ul>
-          <li role="presentation" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              Hike <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="HIKE">Hiking Trails (All)</a>
-              <li class="filter-item disabled" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="HIKE">Hiking 'Gem' Trails</a>
-              <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="HIKE" data-match1="exact">Hiking Only</a>
-              <li class="filter-item" role="presentation"><a data-layer1="peak">High points and Summits</a>
-            </ul>
-          <li role="presentation" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              Motorized <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="OHV">ORV Day Routes</a>
-              <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="OHV,ATV">Designated ATV Trails</a>
-              <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="OHV">ORV Play Areas</a>
-              <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="OHV,MOTORCYCLE">Backcountry Roads</a>
-              <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="OHV,ATV">ATV Trailheads</a>
-              <li class="filter-item" role="presentation"><a data-layer1="snowmobile">Snowmobile</a>
-            </ul>
-          <li role="presentation" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              Parks <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="filter-item" role="presentation"><a data-layer1="park" data-attribute1="urbanpark">Designated Park Areas (All)</a>
-              <li class="filter-item" role="presentation"><a data-layer1="park" data-attribute1="STATE_LGD" data-match1="exact" data-value1="National Parks, Monuments & Historic Sites">National Parks and Monuments</a>
-              <li class="filter-item" role="presentation"><a data-layer1="park" data-attribute1="STATE_LGD" data-match1="exact" data-value1="State Parks and Recreation">State Parks</a>
-              <li class="filter-item" role="presentation"><a data-layer1="park" data-attribute1="STATE_LGD" data-match1="exact" data-value1="Other Federal">Other Federal Recreation Areas</a>
-              <li class="filter-item" role="presentation"><a data-layer1="urbanpark">Urban Parks and Recreation Centers</a>
-              <li class="filter-item" role="presentation"><a data-layer1="park" data-attribute1="STATE_LGD" data-match1="exact" data-value1="National Wilderness Area">Wilderness and Primitive Areas</a>
-            </ul>
-          <li role="presentation" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              Snow <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="filter-item" role="presentation"><a data-layer1="skiarea" data-layer2="skilift">Alpine Ski Areas</a>
-              <li class="filter-item" role="presentation"><a data-layer1="xcski">XC Ski Areas</a>
-              <li class="filter-item disabled" role="presentation"><a>Backcountry Ski Areas</a>
-              <li class="filter-item" role="presentation"><a data-layer1="snowmobile">Snowmobile</a>
-              <li class="filter-item disabled" role="presentation"><a>Snowshoeing</a>
-            </ul>
-          <li role="presentation" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              Other <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="filter-item" role="presentation"><a data-layer1="boat">Boating</a>
-              <li class="filter-item disabled" role="presentation"><a>Camping</a>
-              <li role="presentation"><a href="https://wildlife.utah.gov/fishing-in-utah.html" role="presentation"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Fishing</a>
-              <li class="filter-item" role="presentation"><a data-layer1="golf">Golf Courses</a>
-              <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="HORSE">Hourse and Pack Trails</a>
-              <li role="presentation"><a href="https://wildlife.utah.gov/hunting-in-utah.html" role="presentation"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Hunting</a>
-              <li class="filter-item disabled" role="presentation"><a>Off the Beaten Path</a>
-              <li class="filter-item disabled" role="presentation"><a>Rock Climbing</a>
-              <li class="filter-item" role="presentation"><a data-layer1="trailhead">Trailheads (All)</a>
-              <li class="filter-item disabled" role="presentation"><a>Wildlife Viewing</a>
-            </ul>
+<html class="js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recreation | Utah</title>
+<!-- build:remove -->
+<script data-dojo-config="isDebug: 1" src="./dojo/dojo.js"></script>
+<script src="app/packages.js"></script>
+<script src="app/run.js"></script>
+<!-- /build -->
+<link href="app/resources/app.css" rel="stylesheet" type="text/css">
+</head>
+  <body>
+    <nav class="navbar navbar-blue navbar-fixed-top">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Recreate Utah!</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li role="presentation" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Bike <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="filter-item" role="presentation"><a href="#bike-all" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE" data-layer2="bikeonstreet">Bike Trails (All)</a>
+                <li class="filter-item disabled" role="presentation"><a href="#bike-gem" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE">Mtn Bike 'Gem' Trails</a>
+                <li class="filter-item" role="presentation"><a href="#bike-onstreet" data-layer1="bikeonstreet">On Street and Path Systems</a>
+                <li class="filter-item disabled" role="presentation"><a href="#bike-loops" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE">Road Loops</a>
+                <li class="filter-item disabled" role="presentation"><a href="#bike-climbs" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE">Road Climb Classics</a>
+                <li class="filter-item disabled" role="presentation"><a href="#bike-through" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE">Through Bike Routes</a>
+                <li class="filter-item disabled" role="presentation"><a href="#bike-snow" data-layer1="trail" data-attribute1="DesignatedUses" data-value1="BIKE">Snow Bike Trails</a>
+              </ul>
+            <li role="presentation" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Hike <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="HIKE">Hiking Trails (All)</a>
+                <li class="filter-item disabled" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="HIKE">Hiking 'Gem' Trails</a>
+                <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="HIKE" data-match1="exact">Hiking Only</a>
+                <li class="filter-item" role="presentation"><a data-layer1="peak">High points and Summits</a>
+              </ul>
+            <li role="presentation" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Motorized <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="OHV">ORV Day Routes</a>
+                <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="OHV,ATV">Designated ATV Trails</a>
+                <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="OHV">ORV Play Areas</a>
+                <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="OHV,MOTORCYCLE">Backcountry Roads</a>
+                <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="OHV,ATV">ATV Trailheads</a>
+                <li class="filter-item" role="presentation"><a data-layer1="snowmobile">Snowmobile</a>
+              </ul>
+            <li role="presentation" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Parks <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="filter-item" role="presentation"><a data-layer1="park" data-attribute1="urbanpark">Designated Park Areas (All)</a>
+                <li class="filter-item" role="presentation"><a data-layer1="park" data-attribute1="STATE_LGD" data-match1="exact" data-value1="National Parks, Monuments & Historic Sites">National Parks and Monuments</a>
+                <li class="filter-item" role="presentation"><a data-layer1="park" data-attribute1="STATE_LGD" data-match1="exact" data-value1="State Parks and Recreation">State Parks</a>
+                <li class="filter-item" role="presentation"><a data-layer1="park" data-attribute1="STATE_LGD" data-match1="exact" data-value1="Other Federal">Other Federal Recreation Areas</a>
+                <li class="filter-item" role="presentation"><a data-layer1="urbanpark">Urban Parks and Recreation Centers</a>
+                <li class="filter-item" role="presentation"><a data-layer1="park" data-attribute1="STATE_LGD" data-match1="exact" data-value1="National Wilderness Area">Wilderness and Primitive Areas</a>
+              </ul>
+            <li role="presentation" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Snow <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="filter-item" role="presentation"><a data-layer1="skiarea" data-layer2="skilift">Alpine Ski Areas</a>
+                <li class="filter-item" role="presentation"><a data-layer1="xcski">XC Ski Areas</a>
+                <li class="filter-item disabled" role="presentation"><a>Backcountry Ski Areas</a>
+                <li class="filter-item" role="presentation"><a data-layer1="snowmobile">Snowmobile</a>
+                <li class="filter-item disabled" role="presentation"><a>Snowshoeing</a>
+              </ul>
+            <li role="presentation" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Other <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="filter-item" role="presentation"><a data-layer1="boat">Boating</a>
+                <li class="filter-item disabled" role="presentation"><a>Camping</a>
+                <li role="presentation"><a href="https://wildlife.utah.gov/fishing-in-utah.html" role="presentation"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Fishing</a>
+                <li class="filter-item" role="presentation"><a data-layer1="golf">Golf Courses</a>
+                <li class="filter-item" role="presentation"><a data-layer1="trail" data-attribute1="DesignatedUses" data-value1="HORSE">Hourse and Pack Trails</a>
+                <li role="presentation"><a href="https://wildlife.utah.gov/hunting-in-utah.html" role="presentation"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Hunting</a>
+                <li class="filter-item disabled" role="presentation"><a>Off the Beaten Path</a>
+                <li class="filter-item disabled" role="presentation"><a>Rock Climbing</a>
+                <li class="filter-item" role="presentation"><a data-layer1="trailhead">Trailheads (All)</a>
+                <li class="filter-item disabled" role="presentation"><a>Wildlife Viewing</a>
+              </ul>
+          </ul>
+        </div>
+    </nav>
+    <div class="clearfix"></div>
+    <div class="layout__container">
+      <nav class="off-canvas-navigation section--nav-below">
+        <ul>
+          <li class="menu-item"><a class='menu-button' href="#data">Trail Info</a></li>
+          <li class="sidebar-item"><a class='sidebar-button' href="#info">Extra Info</a></li>
         </ul>
-      </div>
-    </div>
-  </nav>
-  <div data-dojo-type="app/App"></div>
-  <!-- build:template
-  <script data-dojo-config="deps:['app/packages', 'app/run']" src='./dojo/dojo.js'></script>
-  /build -->
-   <!-- build:remove -->
-  <script data-dojo-config="isDebug: 1" src="./dojo/dojo.js"></script>
-  <script src="app/packages.js"></script>
-  <script src="app/run.js"></script>
-  <!-- /build -->
-</body>
+      </nav>
+      <section class="section__data section--nav-below">
+        <aside>
+          <h1>Trails</h1>
+          <h4>Amasa Back Area</h4>
+          <ul class="list-unstyled">
+            <li>Amasa Back (Cliffhanger Road)
+            <li>Jackson
+            <li>Rockstacker
+            <li>Pothole Arch
+            <li>Captain Ahab
+            <li>HyMasa
+          </ul>
+          <h4>Dead Horse Point State Park</h4>
+          <ul class="list-unstyled">
+            <li>Big Chief
+            <li>Crossroads
+            <li>Great Pyramid
+            <li>Intrepid
+            <li>Prickly Pair
+            <li>Raven Roll
+            <li>Twisted Tree
+            <li>Whiptail
+          </ul>
+        </aside>
+       </section>
+      <section class="section__map">
+        <div data-dojo-type="app/App"></div>
+        <!-- build:template
+        <script data-dojo-config="deps:['app/packages', 'app/run']" src='./dojo/dojo.js'></script>
+        /build -->
+      </section>
+      <section class="section__info section--nav-below">
+        <aside>
+          <h1>Area Info</h1>
+          <p>Welcome to the home of the greatest mountain biking on the planet. Moab offers a huge variety of trails for mountain bikers of any experience level, from beginners looking for a scenic ride through beautiful canyons and mesa tops, to seasoned bikers looking for the ultimate challenge.</p>
+
+          <p>Moab is well known for the world famous, and highly technical, Slickrock Bike Trail. This challenging 9.6 mile trail is considered by many to be the ultimate mountain biking experience. Moab, however, also contains an assortment of easy and extremely scenic biking trails. The Bar-M Loop Trail, for example, provides a great introduction to the varied terrain and beautiful scenery adjacent to Arches National Park. Look around this page and create your own mountain biking adventure!</p>
+        </aside>
+    </section>
+  </div>
+  </body>
+</html>

@@ -58,7 +58,7 @@ define([
     return declare([_WidgetBase, _TemplatedMixin], {
         templateString: template,
 
-        class: 'app nav__below',
+        class: 'app',
 
         postCreate() {
             console.info('app/App::postCreate', arguments);
@@ -105,7 +105,7 @@ define([
             GraphicsController.graphicsLayer = graphicsLayer;
             MapController.map.addLayer(graphicsLayer);
 
-            this.setupConnections();
+            // this.setupConnections();
             this._addButtons(map);
         },
         setupConnections() {

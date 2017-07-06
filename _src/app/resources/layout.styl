@@ -1,0 +1,221 @@
+@require 'nib'
+@require vars
+
+/* Globals */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section
+  display block
+html
+  font-size 100%
+  overflow-y scroll
+  text-size-adjust 100%
+::selection
+  background $background-color
+  color $bert-color
+  text-shadow none
+body
+  color #333
+  color rgba(0, 0, 0, .7)
+  background $background-color
+  margin-top .5esm
+a
+  text-decoration none
+  color #247eb7
+  &:hover
+    text-decoration underline
+    color #206fa1
+/* Layout */
+.layout__container
+  height 100%
+  width 100%
+  overflow hidden
+section
+  height 100%
+  box-sizing unset
+.section--nav-below
+  margin $below-banner 0
+.section__map
+  margin-left 0
+  box-shadow 0 0 25px rgba(0, 0, 0, .2)
+  float left
+  z-index 1
+  position relative
+  &:before, &:after
+    content " "
+    position absolute
+    z-index -1
+    top 0
+    left -100%
+    width 100%
+    height 100%
+    background rgba(0, 0, 0, .01)
+  &:after
+    left 100%
+    background rgba(0, 0, 0, .01)
+.section__info
+  margin-right -200%
+  float left
+  z-index 2
+  p
+    font-size 13px
+    margin 0 0 10px
+  overflow scoll
+.section__data
+  margin-left -100%
+  float left
+  padding-bottom 25em
+  z-index 2
+  a
+    display block
+    background rgba(0, 0, 0, .1)
+    padding .8em
+    border-radius 4px
+    &:hover,
+    &:active,
+    &:focus
+      background rgba(0, 0, 0, .2)
+      text-decoration none
+  &.current a
+    background rgba(0, 0, 0, .2)
+    color #fff
+.section__data, .section__info
+  a
+    text-decoration none
+    color $button-text-color
+    font-weight 900
+    &:hover
+      color $bert-color
+  li
+    font-size 13px
+  ul
+    margin-left 5px
+.section__data, .section__map, .section__info
+  transition .2s all ease
+  width 90%
+  padding 5%
+  display block
+  position relative
+  h1
+    color complement($bert-color)
+    font-size 18px
+    margin-bottom .5em
+.active-nav
+  .section__data
+    margin-left 0
+    width 80%
+  .section__map
+    margin-right -100%
+  .section__info
+    margin-right -100%
+    float right
+  .section__data
+    margin-left -200%
+  .section__map
+    margin-left -90%
+  .section__info
+    margin-left 0
+    width 80%
+  .section__map
+    transition .1s all ease
+
+/* Off Canvas Navigation */
+.off-canvas-navigation
+  width 100%
+  overflow hidden
+  display block
+  color #fff
+  ul
+    padding 0
+    margin 0
+  ul li
+    width 20%
+    display block
+    float left
+    &.sidebar-item
+      float right
+.menu-button,
+.sidebar-button
+  padding 1em 20%
+  font-size 14px
+  display block
+  background #333
+  background rgba(0, 0, 0, .3)
+  color #fff
+  border-top-right-radius 1em
+  box-shadow inset 0 20px 20px rgba(255, 255, 255, .1)
+a.menu-button,
+a.sidebar-button
+  &:hover
+    text-decoration none
+    background rgba(0, 0, 0, .35)
+    color #ddd
+.sidebar-button
+  text-align right
+  border-top-left-radius 1em
+  border-top-right-radius 0
+  background rgba(0, 0, 0, .15)
+
+/* Site Menu */
+aside
+    margin-bottom 15%
+    h1
+      font-size 18px
+      margin 0
+      display block
+    a
+      margin 0
+      padding .5em 0
+      display block
+      border-bottom 1px solid rgba(255, 255, 255, .2)
+
+@media all and (min-width 600px)
+  body
+    margin-top 0
+    box-shadow inset 0 0 50px rgba(255, 255, 255, .4)
+  .off-canvas-navigation ul li
+      float right
+      width 20%
+  .menu-button
+      display none
+  .sidebar-button
+      border 0
+  .section__data
+    width 20%
+    margin-left 0
+  .section__map
+    width 60%
+    float left
+    h1
+      text-align left
+  .section__info
+    width 20%
+  .active-sidebar
+    .section__data
+      margin-left -100%
+    .section__map
+      margin-left 0
+      width 60%
+    .section__info
+      margin-right -80%
+      width 20%
+
+@media all and (min-width 800px)
+  .layout__container
+      // max-width 1140px
+      margin 0 auto
+  .off-canvas-navigation
+      display none
+  .section__data
+    width 19%
+    margin-left 0
+    float left
+    padding 3%
+  .section__map
+    width 44%
+    padding 3%
+    h1
+      text-align center
+  .section__info
+    width 19%
+    padding 3%
+    margin-right 0
+    float right
