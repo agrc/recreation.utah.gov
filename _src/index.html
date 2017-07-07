@@ -98,11 +98,13 @@
         </div>
     </nav>
     <div class="clearfix"></div>
-    <div class="layout__container">
+    <div id="layout__container" class="layout__container">
       <nav class="off-canvas-navigation">
         <ul>
-          <li class="sidebar--left"><a class='sidebar sidebar__link' href="#data">Trail Info</a></li>
-          <li class="sidebar--right"><a class='sidebar sidebar__link' href="#info">Extra Info</a></li>
+          <li id="sidebar--left" class="sidebar--left">
+            <a class='sidebar sidebar__link' href="#data">Trail Info</a>
+          <li id="sidebar--right" class="sidebar--right">
+            <a class='sidebar sidebar__link' href="#info">Extra Info</a>
         </ul>
       </nav>
       <section class="section section__data nav--below-relative">
@@ -132,7 +134,6 @@
        </section>
       <section class="section section__map">
         <div data-dojo-type="app/App"></div>
-
       </section>
       <section class="section section__info nav--below-relative">
         <aside>
@@ -143,6 +144,30 @@
         </aside>
     </section>
   </div>
+  <script>
+    var right = document.getElementById('sidebar--right');
+    var left = document.getElementById('sidebar--left');
+    var container = document.getElementById('layout__container');
+    var domClass = container.classList;
+
+    var toggle = function(show, hide) {
+      console.log('toggling ' + hide + ' for ' + show);
+      domClass.remove(hide);
+      if (domClass.contains(show)) {
+        domClass.remove(show);
+      } else {
+        domClass.add(show);
+      }
+    }
+
+    right.addEventListener('click', function (){
+      toggle('active-sidebar', 'active-nav');
+    });
+
+    left.addEventListener('click', function (){
+      toggle('active-nav', 'active-sidebar');
+    });
+  </script>
   <!-- build:remove -->
   <script data-dojo-config="isDebug: 1" src="./dojo/dojo.js"></script>
   <script src="app/packages.js"></script>

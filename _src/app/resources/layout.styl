@@ -7,23 +7,23 @@
 /* Layout */
 .layout__container
   height 100%
-  width 100%
   overflow hidden
+  width 100%
 .section
+  display block
   float left
+  padding 0 5%
+  position relative
   transition .2s all ease
   width 90%
-  padding 0 5%
-  display block
-  position relative
   z-index 2
   p
     font-size 13px
     margin 0 0 10px
   a
-    text-decoration none
     color $button-text-color
     font-weight 900
+    text-decoration none
     &:hover
       color $bert-color
   li
@@ -35,25 +35,26 @@
     font-size 23px
     margin-bottom .5em
   &__map
-    margin-left 0
     box-shadow 0 0 25px rgba(0, 0, 0, .2)
-    z-index 1
+    margin-left 0
+    overflow hidden
     position relative
+    z-index 1
     &:before, &:after
+      background rgba(0, 0, 0, .01)
       content " "
-      position absolute
-      z-index -1
-      top 0
-      left -100%
-      width 100%
       height 100%
-      background rgba(0, 0, 0, .01)
+      left -100%
+      position absolute
+      top 0
+      width 100%
+      z-index -1
     &:after
-      left 100%
       background rgba(0, 0, 0, .01)
+      left 100%
   &__info
     margin-right -200%
-    padding 10% 2% 0 8%
+    padding 10px 3% 0
   &__data
     margin-left -100%
     padding 10px 8% 0 2%
@@ -66,8 +67,10 @@
     &__map
       margin-right -100%
     &__info
-      margin-right -100%
       float right
+      margin-right -100%
+.active-sidebar
+  .section
     &__data
       margin-left -200%
     &__map
@@ -80,32 +83,32 @@
 
 /* Off Canvas Navigation */
 .off-canvas-navigation
-  z-index 50
-  position absolute
   bottom 0
-  width 100%
-  overflow hidden
   color #fff
+  overflow hidden
+  position absolute
+  width 100%
+  z-index 50
   ul
-    padding 0
     margin 0
+    padding 0
     li
-      width 100px
       display block
+      width 100px
 .sidebar
-  padding 1em 20%
-  font-size 14px
-  display block
   background $navbar-default-bg
   background rgba($navbar-default-bg, $sidebar-button-alpha)
-  color $navbar-default-toggle-border-color
   border-radius 2em
   box-shadow inset 0 20px 20px rgba(255, 255, 255, .1)
+  color $navbar-default-toggle-border-color
+  display block
+  font-size 14px
+  padding 1em 20%
   text-align center
-  &__link:hover
-    text-decoration none
+  &__link:hover,  &__link:visited
     background $navbar-default-toggle-hover-bg
     color #fff
+    text-decoration none
   &--right
     float right
   &--left
@@ -120,8 +123,8 @@
       display none
     &--right
       > .sidebar__link
-        display block
         border 0
+        display block
   .section
     width 20%
     &__data
@@ -137,8 +140,9 @@
       &__data
         margin-left -100%
       &__info
+        overflow-y auto
         margin-right -80%
-        width 20%
+        width 24%
 
 @media all and (min-width $media-query-md)
   .layout__container
@@ -149,11 +153,11 @@
     padding 10px 3% 0
     width 19%
     &__map
-      width 44%
       padding 0 3%
+      width 44%
     &__data
-      margin-left 0
       float left
+      margin-left 0
     &__info
-      margin-right 0
       float right
+      margin-right 0
