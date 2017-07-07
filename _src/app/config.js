@@ -44,7 +44,7 @@ define([
     let recreation = 'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/Recreation/';
 
     var config = {
-        version: '1.4.1',
+        version: '1.5.0-0',
         urls: {
             bikeonstreet: {
                 url: recreation + 'FeatureServer/9',
