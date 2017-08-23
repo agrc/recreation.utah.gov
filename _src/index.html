@@ -102,33 +102,32 @@
       <nav class="off-canvas-navigation">
         <ul>
           <li id="sidebar--left" class="sidebar--left">
-            <a class='sidebar sidebar__link' href="#data">Trail Info</a>
+            <a class="sidebar sidebar__link" href="#data">Trail Info</a>
           <li id="sidebar--right" class="sidebar--right">
-            <a class='sidebar sidebar__link' href="#info">Extra Info</a>
+            <a class="sidebar sidebar__link" href="#info">Extra Info</a>
         </ul>
       </nav>
       <section class="section section__data nav--below-relative">
         <aside>
           <h1>Trails</h1>
-          <h4>Amasa Back Area</h4>
-          <ul class="list-unstyled">
-            <li>Amasa Back (Cliffhanger Road)
-            <li>Jackson
-            <li>Rockstacker
-            <li>Pothole Arch
-            <li>Captain Ahab
-            <li>HyMasa
+          <h4>Arches</h4>
+          <ul class="list-unstyled trail" id="moab">
+            <li class="trail__item">Broken Arch
+            <li class="trail__item">Delicate Arch
+            <li class="trail__item">Broken Arch
           </ul>
-          <h4>Dead Horse Point State Park</h4>
-          <ul class="list-unstyled">
-            <li>Big Chief
-            <li>Crossroads
-            <li>Great Pyramid
-            <li>Intrepid
-            <li>Prickly Pair
-            <li>Raven Roll
-            <li>Twisted Tree
-            <li>Whiptail
+          <h4>Moab</h4>
+          <ul class="list-unstyled trail">
+            <li class="trail__item">Fisher Towers
+          </ul>
+          <h4>Wasatch Range</h4>
+          <ul class="list-unstyled trail">
+            <li class="trail__item">Lone Peak
+            <li class="trail__item">Lake Blanch
+          </ul>
+          <h4>Salt Lake City</h4>
+          <ul class="list-unstyled trail">
+            <li class="trail__item">Mueller Park
           </ul>
         </aside>
        </section>
@@ -136,10 +135,9 @@
         <div data-dojo-type="app/App"></div>
       </section>
       <section class="section section__info nav--below-relative">
-        <aside>
+        <aside id="area-details">
           <h1>Area Info</h1>
           <p>Welcome to the home of the greatest mountain biking on the planet. Moab offers a huge variety of trails for mountain bikers of any experience level, from beginners looking for a scenic ride through beautiful canyons and mesa tops, to seasoned bikers looking for the ultimate challenge.</p>
-
           <p>Moab is well known for the world famous, and highly technical, Slickrock Bike Trail. This challenging 9.6 mile trail is considered by many to be the ultimate mountain biking experience. Moab, however, also contains an assortment of easy and extremely scenic biking trails. The Bar-M Loop Trail, for example, provides a great introduction to the varied terrain and beautiful scenery adjacent to Arches National Park. Look around this page and create your own mountain biking adventure!</p>
         </aside>
     </section>
@@ -149,6 +147,8 @@
     var left = document.getElementById('sidebar--left');
     var container = document.getElementById('layout__container');
     var domClass = container.classList;
+    var moab = document.getElementById('moab');
+    var details = document.getElementById('area-details');
 
     var toggle = function(show, hide) {
       console.log('toggling ' + hide + ' for ' + show);
@@ -167,6 +167,18 @@
     left.addEventListener('click', function (){
       toggle('active-nav', 'active-sidebar');
     });
+
+    moab.addEventListener('click', function (){
+        details.innerHTML = '<h1>Delicate Arch Info</h1>' +
+        '<div class="form-group"><label class="block">Difficulty</label>Moderate, but could be strenuous on a hot summer day</div>' +
+        '<div class="form-group"><label class="block">Distance</label>3 miles out and back</div>' +
+        '<div class="form-group"><label class="block">Starting Point</label>Wolfe Ranch Parking Lot</div>' +
+        '<div class="form-group"><label class="block">Relevant Maps</label>USGS Arches National Park; Trails Illustrated Arches National Park</div>' +
+        '<p>An extremely popular route to the world’s most famous arch, which is pictured on Utah state license plates.</p>' +
+        '<a href="http://visitut5218testing.aristotle.net/places-to-go/most-visited-parks/arches/adventure-guide/delicate-arch" target="_blank">Read More on Visit Utah!</a>';
+    })
+
+
   </script>
   <!-- build:remove -->
   <script data-dojo-config="isDebug: 1" src="./dojo/dojo.js"></script>

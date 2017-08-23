@@ -105,7 +105,7 @@ define([
             GraphicsController.graphicsLayer = graphicsLayer;
             MapController.map.addLayer(graphicsLayer);
 
-            // this.setupConnections();
+            this.setupConnections();
             this._addButtons(map);
         },
         setupConnections() {
